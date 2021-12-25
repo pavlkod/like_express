@@ -1,21 +1,14 @@
 const config = require("dotenv").config;
 const http = require("http");
-const Router = require("./Router");
+const EventEmitter = require("events");
 
 config();
 
-const router = new Router();
-
-router.get("/users", (req, res) => {
-  res.end("users");
-  console.log("users");
-});
-router.get("/posts", (req, res) => {
-  res.end("posts");
-  console.log("posts");
-});
+const emitter = new EventEmitter();
 
 const server = http.createServer((req, res) => {
+  emitter.emit(`[${req.url}]:[${req.method}]`);
+
   res.writeHead(200, {
     "Content-type": "text/html;charset=utf-8",
   });
