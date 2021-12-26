@@ -27,5 +27,8 @@ class Application {
   _getRouteMask(path, method) {
     return `[${path}]:[${method}]`;
   }
+  listen(port, callback) {
+    this.server.listen(port, callback);
+  }
 }
 module.exports = Application;
