@@ -1,7 +1,3 @@
-const EventEmitter = require("events");
-
-const emitter = new EventEmitter();
-
 class Router {
   constructor() {
     this.endpoints = {};
@@ -15,9 +11,6 @@ class Router {
       throw new Error("Handler alreary exists");
     }
     endpoint[method] = handler;
-    emitter.on(`[${path}]:[${method}]`, (req, res) => {
-      handler(req, res);
-    });
   }
   get(path, handler) {
     this.request("GET", path, handler);
