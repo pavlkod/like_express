@@ -1,18 +1,10 @@
 const config = require("dotenv").config;
+const Application = require("./framework/Application");
+const router = require("./router");
+
 config();
 
-const Router = require("./framework/Router");
-const Application = require("./framework/Application");
-
 const app = new Application();
-const router = new Router();
-
-router.get("/users", (req, res) => {
-  res.end("users");
-});
-router.get("/posts", (req, res) => {
-  res.end("posts");
-});
 
 app.addRoute(router);
 
