@@ -1,11 +1,13 @@
 const config = require("dotenv").config;
 const Application = require("./framework/Application");
 const router = require("./router");
+const jsonParser = require("./router");
 
 config();
 
 const app = new Application();
 
+app.use(jsonParser);
 app.addRoute(router);
 
 app.listen(process.env.PORT, () => {
