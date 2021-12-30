@@ -9,6 +9,9 @@ const users = [
 router.get("/users", (req, res) => {
   res.end(JSON.stringify(users));
 });
+router.post("/users", (req, res) => {
+  res.end(JSON.stringify(users));
+});
 router.get("/posts", (req, res) => {
   res.end("posts");
 });
