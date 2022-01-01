@@ -7,13 +7,14 @@ const users = [
 ];
 
 router.get("/users", (req, res) => {
-  res.end(JSON.stringify(users));
+  res.send(users);
 });
 router.post("/users", (req, res) => {
-  res.end(JSON.stringify(users));
+  const body = req.body;
+  res.send(body);
 });
 router.get("/posts", (req, res) => {
-  res.end("posts");
+  res.send("posts");
 });
 
 module.exports = router;
