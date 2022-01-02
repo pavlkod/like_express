@@ -1,7 +1,7 @@
 const config = require("dotenv").config;
 const Application = require("./framework/Application");
 const router = require("./router");
-const jsonParser = require("./router");
+const jsonParser = require("./framework/parseJson");
 
 config();
 
