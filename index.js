@@ -9,7 +9,7 @@ config();
 const app = new Application();
 
 app.use(jsonParser);
-app.use(parseUrl);
+app.use(parseUrl(`${process.env.HOST}:${process.env.PORT}`));
 app.addRoute(router);
 
 app.listen(process.env.PORT, () => {
