@@ -11,6 +11,7 @@ router.get("/users", (req, res) => {
 });
 router.post("/users", (req, res) => {
   const body = req.body;
+  users.push(body);
   res.send(body);
 });
 router.get("/posts", (req, res) => {
