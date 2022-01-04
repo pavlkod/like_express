@@ -10,6 +10,11 @@ class RouterController {
     }
     res.send(users);
   }
+  createUser(req, res) {
+    const body = req.body;
+    users.push(body);
+    res.send(body);
+  }
 }
 
 module.exports = new RouterController();
