@@ -16,7 +16,9 @@ class Application {
         if (body) {
           req.body = JSON.parse(body);
         }
-        const emitted = this.emitter.emit(this._getRouteMask(req.url, req.method), req, res);
+
+        this.middlewares.forEach(middleware => middleware(req, res));
+        const emitted = this.emitter.emit(this._getRouteMask(req.pathname, req.method), req, res);
         if (!emitted) {
           res.end("Server response");
         }
@@ -32,7 +34,6 @@ class Application {
       Object.keys(route).forEach(method => {
         const handler = route[method];
         this.emitter.on(this._getRouteMask(path, method), (req, res) => {
-          this.middlewares.forEach(middleware => middleware(req, res));
           handler(req, res);
         });
       });
