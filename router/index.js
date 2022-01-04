@@ -4,11 +4,7 @@ const Router = require("../framework/Router");
 const router = new Router();
 
 router.get("/users", RouterController.getUsers);
-router.post("/users", (req, res) => {
-  const body = req.body;
-  users.push(body);
-  res.send(body);
-});
+router.post("/users", RouterController.createUser);
 router.get("/posts", (req, res) => {
   res.send("posts");
 });
