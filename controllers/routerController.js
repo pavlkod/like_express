@@ -15,8 +15,8 @@ class RouterController {
   }
   async createUser(req, res) {
     const body = req.body;
-    users.push(body);
-    res.send(body);
+    const user = await User.create(body);
+    res.send(user);
   }
 }
 
